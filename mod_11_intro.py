@@ -3,7 +3,7 @@
 from pprint import pprint
 import inspect as ict
 
-# импорт исследуемого модуля
+# импорт исследуемого модуля (кусочек из лекций) - его можно заменить на другой
 import pikaev_2 as pk
 
 
