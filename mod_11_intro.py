@@ -34,21 +34,24 @@ def introspection_info(obj):
         dict_obj['attributes'] = list_attr
         dict_obj['methods'] = list_methods
 
-        # получаем модуль и сразу в словарь его!
-        dict_obj['module'] = obj.__module__
-
-        # если у объекта есть имя - то найдем его
-        try:
-            res = obj.__name__
-        except (AttributeError, NameError):
-            res = 'Нет имени '
-        else:
-            res = obj.__name__
-        finally:
-            # в любом случае надо вставить в словарь что-то
-            dict_obj['__name__'] = res
-
+        # базовый класс
         dict_obj['base_class'] = obj.__bases__
+
+    # получаем модуль и сразу в словарь его!
+    dict_obj['module'] = obj.__class__.__module__
+
+    # если у объекта есть имя - то найдем его
+    try:
+        res = obj.__name__
+    except (AttributeError, NameError):
+        res = 'Нет имени '
+    else:
+        res = obj.__name__
+    finally:
+        # в любом случае надо вставить в словарь что-то
+        dict_obj['__name__'] = res
+
+    # dict_obj['base_class'] = obj.__bases__
 
     return dict_obj
 
